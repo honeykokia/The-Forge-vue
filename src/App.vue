@@ -1,27 +1,27 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import HomeView from './views/HomeView.vue';
+import SliderBar from './views/home/SliderBar.vue';
 </script>
 
 <template>
-  <HomeView/>
-    
-  <!-- <header>
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header> -->
-
-  <!-- <RouterView /> -->
+  <SliderBar></SliderBar>
+  <header>
+    <h1>header</h1>
+  </header>
+  <main>
+    <RouterView/>
+  </main>
 </template>
 
 <style scoped>
-
+  header{
+    width: 100%;
+    height: 15vh;
+    background-color: aqua;
+  }
+  main{
+    width: 100%;
+    height: 85vh;
+    background-color: gray;
+  }
 </style>

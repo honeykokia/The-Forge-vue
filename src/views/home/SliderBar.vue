@@ -2,12 +2,10 @@
 import memberAvatar from '@/assets/jpg/member.jpg';
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import LoginView from './member/LoginView.vue';
 
 const memberAvatarRef = ref(memberAvatar)
 
 </script>
-
 <template>
   <v-card>
     <v-layout>
@@ -36,41 +34,7 @@ const memberAvatarRef = ref(memberAvatar)
           <v-list-item prepend-icon="mdi-star" title="Starred" value="starred"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-
-      <v-main class="header">
-        <div class="nav-left">
-          <router-link to="/">
-            <i class="title">The Forge</i>
-          </router-link>
-        </div>
-        <div class="nav-right">
-          
-        </div>
-      </v-main>
     </v-layout>
-    <div class="content">
-      <RouterView />
-    </div>
   </v-card>
 </template>
-<style scoped>
-.nav-left{
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.title{
-  font-size: 48px;
-}
-.header{
-  height: 15vh;
-  width: 100vw;
-  border-bottom: 1px solid black;
-}
-.content{
-  padding-left: 60px;
-  height: 80vh;
-  width: 100vw;
-}
-</style>
+<style scoped></style>
