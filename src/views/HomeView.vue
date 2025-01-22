@@ -31,10 +31,28 @@ const memberAvatarRef = ref(memberAvatar)
         </v-list>
       </v-navigation-drawer>
 
-      <v-main style="height: 100px"></v-main>
+      <v-main class="header">
+        <div class="nav-left">
+          <i class="title">The Forge</i>
+        </div>
+        <div class="nav-right">
+          
+        </div>
+      </v-main>
     </v-layout>
+    <div class="content">
+
+    </div>
   </v-card>
 </template>
 <style scoped>
-
+.header{
+  height: 15vh;
+  width: 100vw;
+}
+.content{
+  height: 80vh;
+  width: 100vw;
+  background-color: aqua;
+}
 </style>

@@ -1,9 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import HomeView from './views/HomeView.vue';
 </script>
 
 <template>
+  <HomeView/>
+    
   <!-- <header>
 
     <div class="wrapper">
@@ -16,7 +19,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
   </header> -->
 
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
