@@ -1,7 +1,47 @@
 <script setup>
+import { ref } from 'vue';
+
+const baseUrl = import.meta.env.VITE_BASE_URL;
+const form = ref(false);
+const email = ref(null);
+const password = ref(null);
+const loading = ref(false);
+
+const onSubmit =async ()=>{
+    if(!form.value) return;
+    loading.value=true;
+    setTimeout(()=>{
+        loading.value=false;
+    },2000)
+
+    const loginData = {
+        email: email.value,
+        password: password.value,
+    }
+
+    const response = await fetch(`${baseUrl}/api/users/login`,{
+        method:'POST',
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(loginData),
+    });
+
+    if (!response.ok){
+        throw new Error('Response Fail');
+    }
+
+    const data = await response.text();
+    console.log(data);
+
+};
+
+const required = (v)=>{
+    return !!v || 'Field is required';
+};
+
+
 </script>
 <template>
-    <v-sheet class="bg-deep-purple pa-12" rounded>
+    <v-sheet class="pa-12" rounded>
         <v-card class="mx-auto px-6 py-8" max-width="344">
         <v-form
             v-model="form"
