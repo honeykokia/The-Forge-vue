@@ -14,7 +14,7 @@ const onSubmit =async ()=>{
         loading.value=false;
     },2000)
 
-    const loginData = {
+    const loginDto = {
         email: email.value,
         password: password.value,
     }
@@ -22,7 +22,7 @@ const onSubmit =async ()=>{
     const response = await fetch(`${baseUrl}/api/users/login`,{
         method:'POST',
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify(loginData),
+        body: JSON.stringify(loginDto),
     });
 
     if (!response.ok){
