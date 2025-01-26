@@ -22,6 +22,7 @@ const onSubmit =async ()=>{
     const response = await fetch(`${baseUrl}/api/users/login`,{
         method:'POST',
         headers:{'Content-Type': 'application/json'},
+        credentials: "include",
         body: JSON.stringify(loginDto),
     });
 
