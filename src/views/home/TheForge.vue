@@ -1,4 +1,18 @@
 <script setup>
+import { useCommonUtils } from '@/composable/useCommonUtils';
+import { onMounted } from 'vue';
+
+const baseUrl = import.meta.env.VITE_BASE_URL;
+const {checkSession} = useCommonUtils();
+
+onMounted(async()=>{
+    try {
+        const userDetail = await checkSession(`${baseUrl}/api/users/checksession`)
+        console.log(userDetail.email)
+    } catch (error) {
+    
+    }
+})
 
 </script>
 

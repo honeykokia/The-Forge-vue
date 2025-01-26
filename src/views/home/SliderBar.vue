@@ -1,7 +1,6 @@
 <script setup>
 import memberAvatar from '@/assets/jpg/member.jpg';
 import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
 
 const memberAvatarRef = ref(memberAvatar)
 
