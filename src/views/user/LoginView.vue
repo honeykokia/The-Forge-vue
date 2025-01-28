@@ -1,7 +1,10 @@
 <script setup>
+import router from '@/router';
+import { useUserStore } from '@/stores/userStore';
 import { ref } from 'vue';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
+const userStore = useUserStore();
 const form = ref(false);
 const email = ref(null);
 const password = ref(null);
@@ -29,9 +32,11 @@ const onSubmit =async ()=>{
     if (!response.ok){
         throw new Error('Response Fail');
     }
-
+    userStore.login();
     const data = await response.text();
-    console.log(data);
+
+    
+    router.push('/');
 
 };
 
