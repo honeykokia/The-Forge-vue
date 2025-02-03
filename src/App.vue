@@ -1,8 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import SliderBar from './views/home/SliderBar.vue';
-import TitleBar from './views/home/TitleBar.vue';
-import NavBar from './views/home/NavBar.vue';
+import SliderBar from './components/SliderBar.vue';
+import TitleBar from './components/TitleBar.vue';
+import NavBar from './components/NavBar.vue';
 
 </script>
 
@@ -23,13 +23,13 @@ import NavBar from './views/home/NavBar.vue';
     top: 0;
     z-index: 999;
     width: 100%;
-    height: 22vh;
+    height: 170px;
     background-color: white;
-    padding: 10px 150px 0 150px;
+    padding: 20px 150px 0 150px;
   }
   main{
     width: 100%;
-    height: 80vh;
+    height: calc(100vh - 170px);
     background-color: #99ABAA;
     padding: 0 150px;
   }

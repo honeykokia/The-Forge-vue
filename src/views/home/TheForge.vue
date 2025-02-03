@@ -1,32 +1,14 @@
 <script setup>
 import { Network } from "vis-network"
 import { DataSet } from "vis-data"; // 引入 DataSet
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
-// import { useCommonUtils } from '@/composable/useCommonUtils';
-// import { useUserStore } from '@/stores/userStore';
-// import { onMounted } from 'vue';
 
-// const baseUrl = import.meta.env.VITE_BASE_URL;
-// const {checkSession} = useCommonUtils();
-// const userStore = useUserStore();
-
-// onMounted(async()=>{
-//     try {
-//         const userDetail = await checkSession(`${baseUrl}/api/users/checksession`)
-//         if(userDetail.email!=null){
-//             userStore.login();
-//             userStore.updateEmail(userDetail.email);
-//             userStore.updateName(userDetail.name);
-//         }
-//     } catch (error) {
-    
-//     }
-// })
 
 onMounted(() => {
   initializeNetwork();
 });
+
 
 // 節點數據
 const nodes = new DataSet([
@@ -94,51 +76,135 @@ function initializeNetwork() {
   }
 }
 
+const years = ref([
+  { 
+    color: 'black', 
+    year: '2024/8',
+    title:"學習JAVA/MSSQL/JDBC",
+    list:["JAVA基礎/進階語法 (物件導向三大特性、記憶體區域、資料結構)",
+          "MSSQL語法 (CURD、ACID、正規化、JOIN)",
+          "JDBC應用 (使用JAVA操作CURD)"
+    ],
+    text:"Hello",
+  },
+  { 
+    color: 'green', 
+    year: '2024/9 ~ 2024/10',
+    title:"學習HTML/JavaScript/Servlet/Hibernate", 
+    list:["HTML基礎 (行內元素和區塊元素、基本排版、Flexbox)",
+          "JavaScript基礎 (Restful、AJAX、匿名函數)",
+          "Servlet架設 (Tomcat使用、JSP應用、Cookie/Session)",
+          "Hibernate基礎 (OR Mapping、生命週期、關聯性語法)"
+    ],
+    text:"Hello",
+  },
+  { 
+    color: 'pink', 
+    year: '2024/11 ~ 2024/12',
+    title:"學習SpringBoot/Vue.js/Azure" , 
+    list:["SpringBoot基礎 (MVC架構、Thymeleaf、Annotation)",
+          "",
+    ],
+    text:"Hello",
+  },
+  { 
+    color: 'amber', 
+    year: '1990',
+    title:"JAVA", 
+    lists:[],
+    text:"Hello", 
+  },
+  { 
+    color: 'orange', 
+    year: '2000',
+    title:"JAVA", 
+    list:[],
+    text:"Hello",
+  },
+])
+
 </script>
 
 <template>
     <div class="content">
-        <div class="left">
-            <h1>Skill Map</h1>
-            <div id="mynetwork"></div>
-        </div>
-        <div class="right">
-            <div>Lastest Note</div>
-        </div>
+        <h1>Skill Map</h1>
+        <div id="mynetwork"></div>
     </div>
-    <div style="height: 500px;">
-
-</div>
-
+    <div class="timeline">
+      <v-timeline align="start">
+        <v-timeline-item
+          v-for="(year, i) in years"
+          :key="i"
+          :dot-color="year.color"
+          size="small"
+        >
+          <template v-slot:opposite>
+            <div
+              :class="`pt-1 headline font-weight-bold text-${year.color}`"
+              v-text="year.year"
+            ></div>
+          </template>
+          <div>
+            <h2 :class="`mt-n1 headline font-weight-light mb-4 text-${year.color}`">
+              {{year.title}}
+            </h2>
+            <div>
+              <ol style="margin-left: 20px;">
+                <li :style="{color: year.color}" v-for="(item,i) in year.list" :key="i">
+                  {{ item }}
+                </li>
+              </ol>
+            </div>
+          </div>
+        </v-timeline-item>
+      </v-timeline>
+    </div>
 </template>
 
 <style scoped>
 .content{
-    display: flex;
     height: 100%;
-}
-.right{
-    margin-left: 50px;
     width: 100%;
-    height: 100%;
+}
+.left{
+  width: 50%;
+
+}
+/* .right{
+    margin-left: 50px;
+    width: 50%; 
     border: 1px solid lightgray;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 20PX;
 }
-.right div{
+.scroll-container::-webkit-scrollbar {
+  display: none;
+} */
+.timeline{
+  height: auto;
+  margin: 0 100px;
+}
+
+/* .right div{
     width: 500px;
     height: 250px;
     border: 1px solid white;
-}
+} */
 h1{
     color: #FFFFDD;
     font-size: 48px;
+    height: 10%;
 }
 #mynetwork {
-  width: 600px;
-  height: 400px;
-  border: 1px solid lightgray;
+  width: 100%;
+  height: 90%;
+  /* border: 1px solid white; */
 }
 
 

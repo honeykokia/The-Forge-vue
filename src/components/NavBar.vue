@@ -10,10 +10,10 @@
         <v-btn :to="{path: '/about'}" style="font-size: 18px;">
             ABOUT
         </v-btn>
-        <v-btn style="font-size: 18px;">
+        <v-btn :to="{path: '/skill'}" style="font-size: 18px;">
             SKILL
         </v-btn>
-        <v-btn style="font-size: 18px;">
+        <v-btn :to="{path: '/project'}" style="font-size: 18px;">
             PROJECT
         </v-btn>
         <v-btn style="font-size: 18px;">

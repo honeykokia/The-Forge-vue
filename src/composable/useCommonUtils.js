@@ -14,6 +14,17 @@ export function useCommonUtils(){
         return data;
     }
 
+    const imagesLoad = ()=>{
+        const images = import.meta.glob("@/assets/jpg/*.jpg", { eager: true });
 
-    return {checkSession};
+        // 整理為 key-value 結構
+        const imageMap = {};
+        for (const path in images) {
+          const fileName = path.split("/").pop(); // 取得檔案名稱
+          imageMap[fileName] = images[path].default;
+        }
+        return imageMap
+    }
+
+    return {imagesLoad};
 }
