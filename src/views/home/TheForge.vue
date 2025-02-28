@@ -100,25 +100,30 @@ const years = ref([
   },
   { 
     color: 'pink', 
-    year: '2024/11 ~ 2024/12',
+    year: '2024/11',
     title:"學習SpringBoot/Vue.js/Azure" , 
     list:["SpringBoot基礎 (MVC架構、Thymeleaf、Annotation)",
-          "",
+          "Vue.js基礎 (生命週期、props&emit、pinia)",
+          "Azure架設 (架設Windows/Linux虛擬機、雲端資料庫)",
     ],
     text:"Hello",
   },
   { 
-    color: 'amber', 
-    year: '1990',
-    title:"JAVA", 
-    lists:[],
+    color: 'orange', 
+    year: '2024/12 ~ 2025/1',
+    title:"分組專題-租屋網設計", 
+    list:["架設Azure雲端資料庫",
+           "Google Map搜尋系統 (使用者搜尋地址標示附近2公里內的租屋處)",
+           "Google Map繪圖系統 (使用者可以自行圈選範圍顯示租屋處)",
+    ],
     text:"Hello", 
   },
   { 
-    color: 'orange', 
-    year: '2000',
-    title:"JAVA", 
-    list:[],
+    color: 'blue', 
+    year: '2025/2 ~ Now',
+    title:"架設TheForge作品集網頁、學習GCP/AWS", 
+    list:["TheForge網頁設計",
+          "GCP/AWS虛擬機架設"],
     text:"Hello",
   },
 ])
@@ -127,8 +132,10 @@ const years = ref([
 
 <template>
     <div class="content">
+      <div class="left">
         <h1>Skill Map</h1>
         <div id="mynetwork"></div>
+      </div>
     </div>
     <div class="timeline">
       <v-timeline align="start">
@@ -145,7 +152,7 @@ const years = ref([
             ></div>
           </template>
           <div>
-            <h2 :class="`mt-n1 headline font-weight-light mb-4 text-${year.color}`">
+            <h2 :class="`mt-n1 headline font-weight-bold mb-4 text-${year.color}`">
               {{year.title}}
             </h2>
             <div>
@@ -165,10 +172,18 @@ const years = ref([
 .content{
     height: 100%;
     width: 100%;
+    display: flex;
 }
 .left{
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  background-color: #3067FF;
+}
+.right{
   width: 50%;
-
+  height: 100%;
+  border: 1px solid lightgray;
 }
 /* .right{
     margin-left: 50px;
@@ -187,6 +202,7 @@ const years = ref([
   display: none;
 } */
 .timeline{
+  width: 90%;
   height: auto;
   margin: 0 100px;
 }
@@ -197,7 +213,7 @@ const years = ref([
     border: 1px solid white;
 } */
 h1{
-    color: #FFFFDD;
+    color: black;
     font-size: 48px;
     height: 10%;
 }
