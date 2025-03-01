@@ -1,16 +1,16 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import SliderBar from './components/SliderBar.vue';
 import TitleBar from './components/TitleBar.vue';
-import NavBar from './components/NavBar.vue';
-
+import About from './views/home/About.vue';
+import Skill from './views/home/Skill.vue';
+import Project from './views/home/Project.vue';
 </script>
 
 <template>
   <div class="app-container">
-      <header>
+    <header>
       <TitleBar></TitleBar>
-      <NavBar></NavBar>
+      <!-- <NavBar></NavBar> -->
     </header>
     <main>
       <RouterView/>
@@ -25,6 +25,7 @@ import NavBar from './components/NavBar.vue';
     width: 1600px;
     height: 100%;
     margin: 0 auto;
+
   }
   header{
     position: sticky;
@@ -33,12 +34,12 @@ import NavBar from './components/NavBar.vue';
     width: 100%;
     height: 170px;
     background-color: white;
-    /* padding: 20px 150px 0 150px; */
+    padding-top: 20px;
   }
   main{
     width: 100%;
     height: calc(100vh - 170px);
-    border:1px solid #99ABAA;
+    /* border:1px solid #99ABAA; */
   }
   @media (max-width: 1600px) {  /* 1024px ~ 1600px */
     .app-container{

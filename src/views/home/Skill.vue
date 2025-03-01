@@ -1,186 +1,65 @@
 <script setup>
-import { Network } from "vis-network"
-import { DataSet } from "vis-data"; // 引入 DataSet
-import { onMounted, ref } from "vue";
-import { useCommonUtils } from "@/composable/useCommonUtils";
+import { ref } from 'vue';
+import robotJpg from '@/assets/jpg/robot3.png';
 
-const {imagesLoad} = useCommonUtils();
-const images = imagesLoad();
-console.log(JSON.stringify(images))
-
-onMounted(() => {
-  initializeNetwork();
-  
-});
-
-// 節點數據
-const nodes = new DataSet([
-  { id: 1, label: "RoadMap" , color: "#ff4461" },
-  { id: 2, label: "Backend" , color: "#ff7f61"},
-  { id: 3, label: "Frontend", color: "#ff7f61" },
-  { id: 4, label: "DataBase", color: "#ff7f61" },
-  { id: 5, label: "Devops", color: "#ff7f61" },
-  { id: 6, label: "JAVA"},
-  { id: 7, label: "Hibernate"},
-  { id: 8, label: "Servlet"},
-  { id: 9, label: "SpringBoot"},
-  { id: 10, label: "Javascript"},
-  { id: 11, label: "HTML"},
-  { id: 12, label: "CSS"},
-  { id: 13, label: "Vue.js"},
-  { id: 14, label: "MSSQL"},
-  { id: 15, label: "Git"},
-  { id: 16, label: "Azure"},
-  { id: 17, label: "GCP"},
-]);
-
-// 邊數據
-const edges = new DataSet([
-  { from: 1, to: 3 },
-  { from: 1, to: 2 },
-  { from: 1, to: 4 },
-  { from: 1, to: 5 },
-  { from: 2, to: 6 },
-  { from: 2, to: 7 },
-  { from: 2, to: 8 },
-  { from: 2, to: 9 },
-  { from: 3, to: 10},
-  { from: 3, to: 11},
-  { from: 3, to: 12},
-  { from: 3, to: 13},
-  { from: 4, to: 14},
-  { from: 5, to: 15},
-  { from: 5, to: 16},
-  { from: 5, to: 17},
-]);
-
-
-
-// 初始化網絡圖的函數
-function initializeNetwork() {
-  const container = document.getElementById("mynetwork");
-  if (container) {
-    const data = {
-      nodes: nodes,
-      edges: edges,
-    };
-    const options = {};
-    const network = new Network(container, data, options); // 創建網絡圖
-
-    network.fit({
-    nodes: [1,2,3,4], // 要顯示的節點
-    animation: true,// 啟用動畫
-    scale: 5 ,
-});
-
-    
-  } else {
-    console.error("Container not found!");
-  }
-}
-
+const robot = ref(robotJpg);
 </script>
 
 <template>
-    <div class="content">
-        <!-- <div class="left">
-            <p class="title">Skill Map</p>
-            <div id="mynetwork"></div>
-        </div> -->
-        <div class="right">
-            <div>
-              <p>Languages and Databases</p>
-              <div class="right-images">
-                <img :src="images['java.jpg']" alt="">
-                <img :src="images['html5.jpg']" alt="">
-                <img :src="images['css.jpg']" alt="">
-                <img :src="images['javascript.jpg']" alt="">
-                <img :src="images['sqlserver.jpg']" alt="">
-              </div>
-            </div>
-            <div>
-              <p>Frameworks</p>
-              <div class="right-images">
-                <img :src="images['hibernate.jpg']" alt="">
-                <img :src="images['springboot.jpg']" alt="">
-                <img :src="images['vuejs.jpg']" alt="">
-
-              </div>
-            </div>
-            <div>
-              <p>Tools</p>
-              <div class="right-images">
-                <img :src="images['git.jpg']" alt="">
-                <img :src="images['azure.jpg']" alt="">
-                <img :src="images['gcp.jpg']" alt="">
-              </div>
-            </div>
-        </div>
+  <div class="content">
+    <div class="left">
+        <img :src="robot" alt="">
     </div>
-
+    <div class="right">
+        <p class="title">我擅長的事 <span class="wave">⛏️</span></p>
+        <p class="title-text">
+        持續學習與精進技術，專注於程式開發與網頁設計。
+        </p>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 .content{
+    padding-top: 50px;
+    height: 600px;
+    width: 100%;
     display: flex;
-    height: 100%;
 }
-.right{
-    margin-left: 50px;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    
-}
-.right>div{
-    width: 100%;
-    height: 33%;
-    border: 1px solid white;
-    color: #112222;
-    font-size: 36px;
-    padding-left: 10px;
-    border: 1px solid black;
-    background-color: white;
-}
-.right-images{
-  display: flex;
-  margin-top: 1%;
-  width: 100%;
-  height: 50%;
-  object-fit: cover;
-}
-
-
 .title{
-    color: #112222;
+    padding-bottom: 30px;
     font-size: 48px;
+    font-weight: bold;
+    color: black;
 }
-#mynetwork {
-  width: 600px;
-  height: 400px;
-  border: 1px solid lightgray;
+.title-text{
+    font-size: 24px;
+    color: black;
+  }
+.left{
+  width: 50%;
+  height: 100%;
 }
+.left img {
+    width: 100%;
+    height: 100%;
+  }
+.right{
+  width: 50%;
+  height: 100%;
+}
+.wave {
+    display: inline-block;
+    font-size: 48px;
+    animation: wave 2.5s infinite ease-in-out;
+    transform-origin: bottom right; /* 設定旋轉原點為右下角 */
+  }
 
-
+  @keyframes wave {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(20deg); } /* 瞬間往右揮手 */
+    30% { transform: rotate(-15deg); } /* 回彈 */
+    50% { transform: rotate(10deg); } /* 再次小幅擺動 */
+    100% { transform: rotate(0deg); } /* 回到原位 */
+  }
 </style>
-
-// import { useCommonUtils } from '@/composable/useCommonUtils';
-// import { useUserStore } from '@/stores/userStore';
-// import { onMounted } from 'vue';
-
-// const baseUrl = import.meta.env.VITE_BASE_URL;
-// const {checkSession} = useCommonUtils();
-// const userStore = useUserStore();
-
-// onMounted(async()=>{
-//     try {
-//         const userDetail = await checkSession(`${baseUrl}/api/users/checksession`)
-//         if(userDetail.email!=null){
-//             userStore.login();
-//             userStore.updateEmail(userDetail.email);
-//             userStore.updateName(userDetail.name);
-//         }
-//     } catch (error) {
-    
-//     }
-// })
