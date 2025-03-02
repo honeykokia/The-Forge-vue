@@ -1,8 +1,87 @@
 <script setup>
 import { ref } from 'vue';
-import robotJpg from '@/assets/jpg/robot3.png';
+import robotJpg from '@/assets/jpg/robot-idea.png';
+import { useCommonUtils } from '@/composable/useCommonUtils';
+import ImagesList from '@/components/ImagesList.vue';
 
+const {imagesLoad} = useCommonUtils();
+const images = imagesLoad();
 const robot = ref(robotJpg);
+const imgList =ref([
+  {
+    imagesBlack: [
+      images['java.png'],
+      images['springboot.png'],
+      images['hibernate.png'],
+    ],
+    imagesLight:[
+      images['java2.png'],
+      images['springboot2.png'],
+      images['hibernate2.png'],
+    ],
+    title:[
+      'JAVA',
+      'SpringBoot',
+      'Hibernate',
+    ]
+  },
+  {
+    imagesBlack: [
+      images['html.png'],
+      images['css.png'],
+      images['javascript.png'],
+      images['vuejs.png'],
+
+    ],
+    imagesLight:[
+      images['html2.png'],
+      images['css2.png'],
+      images['javascript2.png'],
+      images['vuejs2.png'],
+    ],
+    title:[
+      'HTML5',
+      'CSS3',
+      'JavaScript',
+      'Vue3',
+    ]
+  },
+  {
+    imagesBlack: [
+      images['mssql.png'],
+      images['mysql.png'],
+
+    ],
+    imagesLight:[
+      images['mssql2.png'],
+      images['mysql2.png'],
+    ],
+    title:[
+      'MSSQL',
+      'MYSQL',
+    ]
+  },
+  {
+    imagesBlack: [
+      images['git.png'],
+      images['azure.png'],
+      images['gcp.png'],
+
+    ],
+    imagesLight:[
+      images['git2.png'],
+      images['azure2.png'],
+      images['gcp2.png'],
+    ],
+    title:[
+      'Git',
+      'Azure',
+      'GCP',
+    ]
+  },
+])
+
+
 </script>
 
 <template>
@@ -11,10 +90,13 @@ const robot = ref(robotJpg);
         <img :src="robot" alt="">
     </div>
     <div class="right">
-        <p class="title">我擅長的事 <span class="wave">⛏️</span></p>
+        <p class="title">我擅長的技能 <span class="wave">⛏️</span></p>
         <p class="title-text">
         持續學習與精進技術，專注於程式開發與網頁設計。
         </p>
+        <div v-for="img in imgList" class="right-images">
+          <ImagesList :imgList="img" />
+        </div>
     </div>
   </div>
 </template>
@@ -22,7 +104,7 @@ const robot = ref(robotJpg);
 <style scoped>
 .content{
     padding-top: 50px;
-    height: 600px;
+    height: 700px;
     width: 100%;
     display: flex;
 }
@@ -47,6 +129,12 @@ const robot = ref(robotJpg);
 .right{
   width: 50%;
   height: 100%;
+}
+.right-images{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-top: 30px;
 }
 .wave {
     display: inline-block;

@@ -15,7 +15,7 @@ export function useCommonUtils(){
     }
 
     const imagesLoad = ()=>{
-        const images = import.meta.glob("@/assets/jpg/*.jpg", { eager: true });
+        const images = import.meta.glob("@/assets/jpg/*.png", { eager: true });
 
         // 整理為 key-value 結構
         const imageMap = {};

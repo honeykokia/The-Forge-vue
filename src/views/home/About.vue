@@ -1,5 +1,5 @@
 <script setup>
-import robotJpg from '@/assets/jpg/robot2.png';
+import robotJpg from '@/assets/jpg/robot-coding.png';
 
 import { ref } from 'vue';
 

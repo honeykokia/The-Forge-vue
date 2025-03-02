@@ -39,7 +39,7 @@ const github = ref(githubJpg);
         padding-bottom: 20px;
     }
     .title img{
-        width: 90px;
+        width: 120px;
         height: 100%;
     }
     .title p{
