@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import About from '@/views/home/About.vue'
-import Skill from '@/views/home/Skill.vue'
-import Project from '@/views/home/Project.vue'
 import Home from '@/views/home/Home.vue'
 
 const router = createRouter({
